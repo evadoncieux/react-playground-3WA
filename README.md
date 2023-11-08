@@ -65,16 +65,8 @@ Il faudra nous assurer que les users sont bien présent avant de pouvoir affiche
 
 Nous aurons également besoin du hook d'état
 
-Rappelez que pour l'instant nous utilisons React d'une manière peut conventionnelle ce qui fait que si nous voyons dans la documentation `useState` nous devons modifier par `React.useState`
+Rappelez que pour l'instant nous utilisons React d'une manière peu conventionnelle ce qui fait que si nous voyons dans la documentation `useState` nous devons modifier par `React.useState`
 
 ---
 
 Pour passer à la suite vous devez commit vos changements puis checkout sur la branche exo9
-
-
-
-
-
-
-
-

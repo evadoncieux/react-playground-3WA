@@ -5,6 +5,7 @@ function UserGreeting(props) {
   function GuestGreeting(props) {
     return <h1>Veuillez vous connecter</h1>;
   }
+
   function Greeting(props) {
       const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
@@ -32,8 +33,42 @@ function UserGreeting(props) {
         </React.Fragment>
     )
   }
-  
-  ReactDOM.render(
-    <Greeting />,
-    document.querySelector('#app')
-  );
+
+
+  function fetchUserInfo() {
+    return fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(users => {
+        const user = users[0]
+        let name = user.name;
+        let email = user.email;
+        let company = user.company.name;
+        let phone = user.phone;
+        let website = user.website;
+    
+        console.log(user);
+        return users;
+      })
+  }
+
+
+  function UserCard({users}) {
+    const listItems = users.map((user) => (
+    <li key={user.id}>
+        <h3>{user.name}</h3>
+        <ul>{user.email}</ul>
+        <ul>{user.company.name}</ul>
+        <ul>{user.phone}</ul>
+        <ul>{user.website}</ul>
+    </li>
+  ));
+
+  return <ul>{listItems}</ul>;
+  }
+
+  fetchUserInfo().then((users) => {
+    ReactDOM.render(
+      <UserCard users={users} />,
+      document.querySelector('#app')
+    );
+  });
